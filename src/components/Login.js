@@ -1,4 +1,12 @@
 import { useEffect } from "react";
+import styled from "styled-components";
+
+const LoginButton = styled.button`
+  background: #1db954;
+  border-style: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+`;
 
 const Player = ({
   getCookie,
@@ -62,7 +70,7 @@ const Player = ({
           "%20"
         )}&response_type=token&show_dialog=true`}
       >
-        <button>Log in!</button>
+        <LoginButton>Log in!</LoginButton>
       </a>
     </div>
   );

@@ -61,10 +61,6 @@ const Player = ({ spotifyApi }) => {
   return (
     <div style={{ display: "grid", gridAutoFlow: "row" }}>
       <div style={{ display: "grid", gridAutoFlow: "column" }}>
-        <PlayerBar {...{ spotifyApi, handleSkip }} />
-        <CurrentTrack current={activeSong?.item} />
-      </div>
-      <div style={{ display: "grid", gridAutoFlow: "column" }}>
         <div>
           <h2>Set Active Playlist</h2>
           <Playlists
@@ -91,6 +87,8 @@ const Player = ({ spotifyApi }) => {
         </div>
         {/* <Songs songs={songs.tracks.items} /> */}
       </div>
+      <PlayerBar {...{ spotifyApi, handleSkip }} />
+      <CurrentTrack current={activeSong?.item} />
     </div>
   );
 };

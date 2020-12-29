@@ -3,6 +3,9 @@ import styled from "styled-components";
 const StyledPlayerBar = styled.div`
   display: grid;
   grid-auto-flow: column;
+  * {
+    font-size: 10rem;
+  }
 `;
 
 const StyledPlayButtons = styled.button`
