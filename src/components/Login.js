@@ -39,7 +39,7 @@ const Player = ({
     if (token.access_token) {
       tokenCallback(token);
     }
-  }, [tokenCallback]);
+  }, [tokenCallback, getToken]);
 
   const authEndpoint = "https://accounts.spotify.com/authorize";
   const redirectUri = "https://elastic-curie-eb4082.netlify.app/";
