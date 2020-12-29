@@ -21,14 +21,7 @@ const Player = ({
     if (cookie) {
       setState({ token: cookie.token, expiresIn: cookie.expires });
     }
-  }, [getCookie]);
-
-  useEffect(() => {
-    const token = getToken();
-    if (token.access_token) {
-      tokenCallback(token);
-    }
-  }, [tokenCallback]);
+  }, [getCookie, setState, spotify_token]);
 
   const tokenCallback = (token) => {
     const date = new Date();
@@ -40,6 +33,13 @@ const Player = ({
     setCookie(spotify_token, cookie, new Date(date.getTime() + expiresIn));
     setState({ ...state, token: token.access_token, expiresIn: expiresIn });
   };
+
+  useEffect(() => {
+    const token = getToken();
+    if (token.access_token) {
+      tokenCallback(token);
+    }
+  }, [tokenCallback]);
 
   const authEndpoint = "https://accounts.spotify.com/authorize";
   const redirectUri = "https://elastic-curie-eb4082.netlify.app/";
