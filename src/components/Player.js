@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Playlists from "./Playlists";
 // import Songs from "./Songs";
 import PlayerBar from "./PlayerBar";
