@@ -1,23 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import SpotifyWebApi from "spotify-web-api-js";
+import Player from "./components/Player";
+import Login from "./components/Login";
+import "./App.css";
+import {
+  setCookie,
+  removeCookie,
+  getCookie,
+  spotify_token,
+  spotifyCookie,
+  getToken,
+} from "./services/tokenService";
+import useInterval from "./services/useInterval";
 
 function App() {
+  const [state, setState] = useState({ logout: false, token: "" });
+  let spotifyApi = new SpotifyWebApi();
+  spotifyApi.setAccessToken(state.token);
+
+  const logoutCallback = () => {
+    removeCookie(spotify_token);
+    setState({
+      token: "",
+      logout: true,
+    });
+  };
+
+  useInterval(() => {
+    setState((s) => ({ ...s, expiresIn: s.expiresIn - 5000 }));
+    if (state.expiresIn && state.expiresIn < 0) {
+      logoutCallback();
+    }
+  }, 5000);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {!state.token || state.logout ? (
+        <Login
+          {...{
+            getCookie,
+            spotify_token,
+            state,
+            setState,
+            setCookie,
+            removeCookie,
+            getToken,
+          }}
+        />
+      ) : (
+        <Player
+          token={state.token}
+          logoutCallback={logoutCallback}
+          expiresIn={state.expiresIn}
+          {...{ spotifyApi }}
+        />
+      )}
     </div>
   );
 }
