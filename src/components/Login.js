@@ -21,14 +21,14 @@ const Player = ({
     if (cookie) {
       setState({ token: cookie.token, expiresIn: cookie.expires });
     }
-  }, []);
+  }, [getCookie, cookie]);
 
   useEffect(() => {
     const token = getToken();
     if (token.access_token) {
       tokenCallback(token);
     }
-  }, []);
+  }, [tokenCallback]);
 
   const tokenCallback = (token) => {
     const date = new Date();
