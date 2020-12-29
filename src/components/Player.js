@@ -31,7 +31,7 @@ const Player = ({ spotifyApi }) => {
     }
 
     data();
-  }, [spotifyApi]);
+  }, []);
 
   // useEffect(() => {
   //   async function data() {
