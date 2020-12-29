@@ -21,7 +21,7 @@ const Player = ({
     if (cookie) {
       setState({ token: cookie.token, expiresIn: cookie.expires });
     }
-  }, [getCookie, cookie]);
+  }, [getCookie]);
 
   useEffect(() => {
     const token = getToken();
