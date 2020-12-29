@@ -43,8 +43,7 @@ const Player = ({
   };
 
   const authEndpoint = "https://accounts.spotify.com/authorize";
-  const clientId = "450d450e2ce14dbd82dcf6d8fa33d326";
-  const redirectUri = "http://localhost:3000";
+  const redirectUri = "https://elastic-curie-eb4082.netlify.app/";
   const scopes = [
     "user-read-email",
     "user-read-private",
@@ -66,7 +65,9 @@ const Player = ({
   return (
     <div>
       <a
-        href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
+        href={`${authEndpoint}?client_id=${
+          process.env.REACT_APP_clientId
+        }&redirect_uri=${redirectUri}&scope=${scopes.join(
           "%20"
         )}&response_type=token&show_dialog=true`}
       >
