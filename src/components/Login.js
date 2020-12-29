@@ -14,7 +14,6 @@ const Player = ({
   state,
   setState,
   setCookie,
-  removeCookie,
   getToken,
 }) => {
   useEffect(() => {

@@ -8,7 +8,6 @@ import {
   removeCookie,
   getCookie,
   spotify_token,
-  spotifyCookie,
   getToken,
 } from "./services/tokenService";
 import useInterval from "./services/useInterval";
