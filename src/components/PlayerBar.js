@@ -22,7 +22,7 @@ const PlayerBar = ({ spotifyApi, handleAdd, handleSkip }) => {
       <StyledPlayButtons onClick={() => spotifyApi.pause()}>
         ⏸
       </StyledPlayButtons>
-      <StyledPlayButtons onClick={() => handleAdd()}>👍</StyledPlayButtons>
+      <StyledPlayButtons onClick={() => handleAdd()}>👍🏼</StyledPlayButtons>
       <StyledPlayButtons onClick={() => spotifyApi.skipToPrevious()}>
         👈🏽
       </StyledPlayButtons>
