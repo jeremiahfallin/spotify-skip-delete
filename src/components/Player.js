@@ -42,19 +42,25 @@ const Player = ({ spotifyApi }) => {
   //   data();
   // }, [activePlaylist]);
 
-  const handleSkip = () => {
+  const handleSkip = async () => {
     if (activePlaylist !== "" && addPlaylist !== "" && removePlaylist !== "") {
+      let p = await spotifyApi.getMyCurrentPlayingTrack();
+      spotifyApi.addTracksToPlaylist(removePlaylist, [p.item.uri]);
+      spotifyApi.removeTracksFromPlaylist(activePlaylist, [p.item.uri]);
+      setActiveSong(p);
+      p = await spotifyApi.getMyCurrentPlayingTrack();
       spotifyApi.skipToNext();
-      // spotifyApi.addTracksToPlaylist(removePlaylist, [activeSong.item.uri]);
-      spotifyApi.removeTracksFromPlaylist(activePlaylist, [
-        activeSong.item.uri,
-      ]);
-      async function data() {
-        const p = await spotifyApi.getMyCurrentPlayingTrack();
-        setActiveSong(p);
-      }
+    }
+  };
 
-      data();
+  const handleAdd = async () => {
+    if (activePlaylist !== "" && addPlaylist !== "" && removePlaylist !== "") {
+      let p = await spotifyApi.getMyCurrentPlayingTrack();
+      spotifyApi.addTracksToPlaylist(addPlaylist, [p.item.uri]);
+      spotifyApi.removeTracksFromPlaylist(activePlaylist, [p.item.uri]);
+      spotifyApi.skipToNext();
+      p = await spotifyApi.getMyCurrentPlayingTrack();
+      spotifyApi.skipToNext();
     }
   };
 
@@ -87,7 +93,7 @@ const Player = ({ spotifyApi }) => {
         </div>
         {/* <Songs songs={songs.tracks.items} /> */}
       </div>
-      <PlayerBar {...{ spotifyApi, handleSkip }} />
+      <PlayerBar {...{ spotifyApi, handleSkip, handleAdd }} />
       <CurrentTrack current={activeSong?.item} />
     </div>
   );

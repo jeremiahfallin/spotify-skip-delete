@@ -71,6 +71,30 @@ const Player = ({
         )}&response_type=token&show_dialog=true`}
       >
         <LoginButton>Log in!</LoginButton>
+        <p>
+          Spotify's Discover Weekly and Release Radar are great. Sometimes we
+          get busy though and end up with a playlist with a backlog of songs we
+          wanted to listen to. This can be tedious to cut down on, which is a
+          problem this tool can help with!
+        </p>
+        <p>How it works:</p>
+        <p>After you log in with Spotify you'll see 3 dropdowns.</p>
+        <p>
+          Active Playlist is the playlist you're going to be listening to/want
+          songs deleted from
+        </p>
+        <p>
+          Add playlist is the playlist songs will be added to when you click the
+          thumbs up.
+        </p>
+        <p>
+          Removed playlist is backup. It is the playlist songs will get added to
+          when you skip them in the Active Playlist
+        </p>
+        <p>
+          Whether you click to add or skip a song it will be removed from the
+          Active Playlist.
+        </p>{" "}
       </a>
     </div>
   );

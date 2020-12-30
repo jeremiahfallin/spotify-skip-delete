@@ -15,13 +15,14 @@ const StyledPlayButtons = styled.button`
   background: none;
 `;
 
-const PlayerBar = ({ spotifyApi, handleSkip }) => {
+const PlayerBar = ({ spotifyApi, handleAdd, handleSkip }) => {
   return (
     <StyledPlayerBar>
       <StyledPlayButtons onClick={() => spotifyApi.play()}>▶</StyledPlayButtons>
       <StyledPlayButtons onClick={() => spotifyApi.pause()}>
         ⏸
       </StyledPlayButtons>
+      <StyledPlayButtons onClick={() => handleAdd()}>👍</StyledPlayButtons>
       <StyledPlayButtons onClick={() => spotifyApi.skipToPrevious()}>
         👈🏽
       </StyledPlayButtons>
