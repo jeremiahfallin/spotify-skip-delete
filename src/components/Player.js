@@ -60,7 +60,6 @@ const Player = ({ spotifyApi }) => {
       spotifyApi.removeTracksFromPlaylist(activePlaylist, [p.item.uri]);
       spotifyApi.skipToNext();
       p = await spotifyApi.getMyCurrentPlayingTrack();
-      spotifyApi.skipToNext();
     }
   };
 
