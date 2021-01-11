@@ -42,7 +42,7 @@ const Player = ({
   }, []);
 
   const authEndpoint = "https://accounts.spotify.com/authorize";
-  const redirectUri = "https://elastic-curie-eb4082.netlify.app/";
+  const redirectUri = "https://spotify-skip-delete.netlify.app/";
   const scopes = [
     "user-read-email",
     "user-read-private",
